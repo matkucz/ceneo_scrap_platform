@@ -9,6 +9,7 @@ from scrapeapi.serializer import (
     RegisterSerializer,
 )
 from scrapeapi.models import Collection, Product
+from scrapeapi.tasks import scrap_data_from_website
 
 
 class RegisterView(APIView):
@@ -167,5 +168,8 @@ class ProductListView(APIView):
         serializer = ProductSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
+            scrap_data_from_website.delay(
+                serializer.data["address"], serializer.data["id"]
+            )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

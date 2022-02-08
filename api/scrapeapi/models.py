@@ -28,13 +28,22 @@ class Product(models.Model):
     description = models.CharField(
         max_length=100, blank=True, null=False, default=''
     )
-    min_price = models.FloatField(null=False)
-    max_price = models.FloatField(null=False)
+    errors = name = models.CharField(
+        max_length=100, null=True
+    )
+    min_price = models.FloatField(null=True)
+    min_price_shop = name = models.CharField(
+        max_length=100, null=True
+    )
+    max_price = models.FloatField(null=True)
+    max_price_shop = name = models.CharField(
+        max_length=100, null=True
+    )
     name = models.CharField(
         max_length=100, blank=True, null=False, default=''
     )
     price = models.FloatField(null=False)
     shop_name = models.CharField(
-        max_length=100, blank=True, null=False, default=''
+        max_length=100, blank=True, default=''
     )
-    shop_price = models.FloatField(null=False)
+    shop_price = models.FloatField(null=True)

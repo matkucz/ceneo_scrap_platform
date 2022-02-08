@@ -50,18 +50,4 @@ class CollectionSerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = [
-            'id',
-            'address',
-            'collection',
-            'created',
-            'created_by',
-            'deleted',
-            'description',
-            'min_price',
-            'max_price',
-            'name',
-            'price',
-            'shop_name',
-            'shop_price',
-        ]
+        fields = '__all__'

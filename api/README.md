@@ -15,13 +15,18 @@ export DB_NAME=db
 export DB_USER=dbuser
 export DB_PASSWORD=dbpassword
 export SECRET_KEY='super-secret-django-key'
+export REDIS_PORT=6379
+export REDIS_HOST=localhost
 ```
 ### Make migrations
 ```
-python manage.py makemigrations
-python manage.py migrate scrapeapi
+python manage.py migrate
 ```
 ### Run server
 ```
 python manage.py runserver
+```
+### Run celery
+```
+celery -A scrapeapp worker -P threads -l INFO
 ```
