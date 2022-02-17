@@ -5,13 +5,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import EditIcon from '@mui/icons-material/Edit';
-import ToggleButton from "@mui/material/ToggleButton";
 
 
-export default function Product() {
-  const [selected, setSelected] = React.useState(false);
-  
+export default function AddProduct() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -27,25 +23,9 @@ export default function Product() {
   return (
     <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
       <Paper variant="outlined" component="form" onSubmit={handleSubmit} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-        <Grid container spacing={3} sx={{ mb: 3}}>
-            <Grid item xs={6}>
-              <Typography component="h1" variant="h4">
-                Product
-              </Typography>
-            </Grid>
-            <Grid item xs={6} sx={{ display: 'flex', justifyContent: "flex-end"}}>
-            <ToggleButton
-              value="check"
-              selected={selected}
-              color="success"
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              <EditIcon />
-            </ToggleButton>
-          </Grid>
-        </Grid>
+        <Typography component="h1" variant="h4" align="center" sx={{ mb: 3 }}>
+          Add new product
+        </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
@@ -54,9 +34,6 @@ export default function Product() {
               name="name"
               label="Name"
               fullWidth
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -68,9 +45,6 @@ export default function Product() {
               fullWidth
               multiline
               rows={4}
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -80,11 +54,7 @@ export default function Product() {
               name="address"
               label="URL Address"
               type="url"
-              defaultValue={"allegro.pl"}
               fullWidth
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -95,9 +65,6 @@ export default function Product() {
               label="Price"
               type="number"
               fullWidth
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -107,9 +74,6 @@ export default function Product() {
               name="shop_name"
               label="Shop name"
               fullWidth
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -117,15 +81,15 @@ export default function Product() {
               id="errors"
               name="errors"
               label="Errors"
+              inputProps={{
+                  readOnly: true
+              }}
               color="error"
               fullWidth
               multiline
               error
               focused
               defaultValue={"Sample multiline error\nAnother line in error"}
-              inputProps={{
-                  readOnly: true
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -133,10 +97,9 @@ export default function Product() {
               type="submit"
               fullWidth
               variant="contained"
-              color="success"
-              disabled={!selected}
+              sx={{ mt: 3, mb: 2 }}
             >
-              Edit
+              Add
             </Button>
           </Grid>
         </Grid>

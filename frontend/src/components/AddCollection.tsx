@@ -5,13 +5,9 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import EditIcon from '@mui/icons-material/Edit';
-import ToggleButton from "@mui/material/ToggleButton";
 
 
-export default function Collection() {
-  const [selected, setSelected] = React.useState(false);
-
+export default function AddCollection() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,25 +20,9 @@ export default function Collection() {
   return (
     <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
       <Paper variant="outlined" component="form" onSubmit={handleSubmit} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-        <Grid container spacing={3} sx={{ mb: 3}}>
-          <Grid item xs={6}>
-            <Typography component="h1" variant="h4">
-              Collection
-            </Typography>
-          </Grid>
-          <Grid item xs={6} sx={{ display: 'flex', justifyContent: "flex-end"}}>
-            <ToggleButton
-              value="check"
-              selected={selected}
-              color="success"
-              onChange={() => {
-                setSelected(!selected);
-              }}
-            >
-              <EditIcon />
-            </ToggleButton>
-          </Grid>
-        </Grid>
+        <Typography component="h1" variant="h4" align="center" sx={{ mb: 3 }}>
+          Add new collection
+        </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <TextField
@@ -51,9 +31,6 @@ export default function Collection() {
               name="title"
               label="Title"
               fullWidth
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -64,9 +41,6 @@ export default function Collection() {
               fullWidth
               multiline
               rows={4}
-              InputProps={{
-                readOnly: !selected
-              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -74,10 +48,8 @@ export default function Collection() {
               type="submit"
               fullWidth
               variant="contained"
-              color="success"
-              disabled={!selected}
             >
-              Edit
+              Add
             </Button>
           </Grid>
         </Grid>
