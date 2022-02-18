@@ -80,7 +80,7 @@ export default function Product() {
               name="address"
               label="URL Address"
               type="url"
-              defaultValue={"allegro.pl"}
+              defaultValue={"http://example.com"}
               fullWidth
               InputProps={{
                 readOnly: !selected
