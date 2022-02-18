@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ButtonGroup, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip } from "@mui/material";
+import { ButtonGroup, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -25,78 +25,84 @@ export default function Collections() {
   ]);
 
   return (
-    <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="right">Title</TableCell>
-              <TableCell align="right">Descrription</TableCell>
-              <TableCell align="right" sx={{ minWidth: 150 }}>
-                <ButtonGroup>
-                  <Tooltip title="Add">
-                    <IconButton
-                      component="span"
-                      color="primary"                      
+    <TableContainer component={Paper}>
+      <Typography
+        sx={{ my: 2, mx: 2 }}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+      >
+        Collections
+      </Typography>
+      <Table aria-label="collection table">
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell align="right">Title</TableCell>
+            <TableCell align="right">Descrription</TableCell>
+            <TableCell align="right" sx={{ minWidth: 150 }}>
+              <ButtonGroup>
+                <Tooltip title="Add">
+                  <IconButton
+                    component="span"
+                    color="primary"                      
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete all">
+                  <IconButton
+                    component="span"
+                    color="error"
                     >
-                      <AddIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Delete all">
-                    <IconButton
-                      component="span"
-                      color="error"
-                      >
-                      <DeleteIcon />
-                    </IconButton>
-                  </Tooltip>
-                </ButtonGroup>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              rows.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">{row.id}</TableCell>
-                  <TableCell align="right">{row.title}</TableCell>
-                  <TableCell align="right">{row.description}</TableCell>
-                  <TableCell align="right">
-                    <ButtonGroup>
-                      <Tooltip title="Show">
-                        <IconButton
-                          component="span"
-                          color="primary"
-                          >
-                          <VisibilityIcon />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Edit">
-                        <IconButton
-                          component="span"
-                          color="success"
-                          
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
+              </ButtonGroup>
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {
+            rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">{row.id}</TableCell>
+                <TableCell align="right">{row.title}</TableCell>
+                <TableCell align="right">{row.description}</TableCell>
+                <TableCell align="right">
+                  <ButtonGroup>
+                    <Tooltip title="Show">
+                      <IconButton
+                        component="span"
+                        color="primary"
                         >
-                          <EditIcon />
-                        </IconButton>
-                      </Tooltip>
-                      <Tooltip title="Delete">
-                        <IconButton
-                          component="span"
-                          color="error"
-                          >
-                          <DeleteIcon />
-                        </IconButton>
-                      </Tooltip>
-                    </ButtonGroup>
-                  </TableCell>
-                </TableRow>
-              ))
-            }
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
-  )
+                        <VisibilityIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Edit">
+                      <IconButton
+                        component="span"
+                        color="success"
+                        
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Delete">
+                      <IconButton
+                        component="span"
+                        color="error"
+                        >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </ButtonGroup>
+                </TableCell>
+              </TableRow>
+            ))
+          }
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 }
