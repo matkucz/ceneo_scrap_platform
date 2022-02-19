@@ -6,11 +6,13 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import EditIcon from '@mui/icons-material/Edit';
 import ToggleButton from "@mui/material/ToggleButton";
+import { useParams } from 'react-router-dom';
 
 
 export default function Product() {
   const [selected, setSelected] = React.useState(false);
-  
+  const params = useParams();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,14 +27,15 @@ export default function Product() {
 
   return (
     <Paper variant="outlined" component="form" onSubmit={handleSubmit} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-      <Grid container spacing={3} sx={{ mb: 3}}>
-          <Grid item xs={6}>
-            <Typography component="h1" variant="h4">
-              Product
-            </Typography>
-          </Grid>
-          <Grid item xs={6} sx={{ display: 'flex', justifyContent: "flex-end"}}>
+      <Grid container spacing={3} sx={{ mb: 3 }}>
+        <Grid item xs={6}>
+          <Typography component="h1" variant="h6">
+            Product ID: {params.productId}
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sx={{ display: 'flex', justifyContent: "flex-end" }}>
           <ToggleButton
+            size="small"
             value="check"
             selected={selected}
             color="success"
@@ -122,7 +125,7 @@ export default function Product() {
             focused
             defaultValue={"Sample multiline error\nAnother line in error"}
             inputProps={{
-                readOnly: true
+              readOnly: true
             }}
           />
         </Grid>

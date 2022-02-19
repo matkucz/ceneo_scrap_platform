@@ -21,7 +21,7 @@ export default function AddProduct() {
 
   return (
     <Paper variant="outlined" component="form" onSubmit={handleSubmit} sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
-      <Typography component="h1" variant="h4" align="center" sx={{ mb: 3 }}>
+      <Typography component="h1" variant="h6" align="center" sx={{ mb: 3 }}>
         Add new product
       </Typography>
       <Grid container spacing={3}>

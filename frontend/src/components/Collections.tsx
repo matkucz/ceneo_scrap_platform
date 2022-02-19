@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ButtonGroup, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip, Typography } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -44,8 +45,9 @@ export default function Collections() {
               <ButtonGroup>
                 <Tooltip title="Add">
                   <IconButton
-                    component="span"
-                    color="primary"                      
+                    component={RouterLink}
+                    color="primary"
+                    to={`/collections/new`}
                   >
                     <AddIcon />
                   </IconButton>
@@ -71,19 +73,20 @@ export default function Collections() {
                 <TableCell align="right">{row.description}</TableCell>
                 <TableCell align="right">
                   <ButtonGroup>
-                    <Tooltip title="Show">
+                    <Tooltip title="Show products">
                       <IconButton
-                        component="span"
+                        component={RouterLink}
                         color="primary"
+                        to={`/collections/${row.id}/products`}
                         >
                         <VisibilityIcon />
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Edit">
                       <IconButton
-                        component="span"
+                        component={RouterLink}
                         color="success"
-                        
+                        to={`/collections/${row.id}`}
                       >
                         <EditIcon />
                       </IconButton>

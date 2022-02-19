@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { ButtonGroup, Chip, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip, Typography } from "@mui/material";
+import { ButtonGroup, Chip, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip, Typography } from "@mui/material";
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-export default function Products({id} : {id : number}) {
+
+export default function Products() {
   const [rows, setRows] = React.useState([
     {
       "id": 1,
@@ -35,6 +37,7 @@ export default function Products({id} : {id : number}) {
       "errors": "Sample error"
     }
   ]);
+  const params = useParams();
 
   return (
     <TableContainer component={Paper}>
@@ -44,7 +47,7 @@ export default function Products({id} : {id : number}) {
         id="tableTitle"
         component="div"
       >
-        Collection {id} products
+        Collection {params.collectionId} products
       </Typography>
       <Table aria-label="simple table">
         <TableHead>
@@ -60,8 +63,9 @@ export default function Products({id} : {id : number}) {
               <ButtonGroup>
                 <Tooltip title="Add">
                   <IconButton
-                    component="span"
+                    component={RouterLink}
                     color="primary"
+                    to={`/collections/${params.collectionId}/products/new`}
                   >
                     <AddIcon />
                   </IconButton>
@@ -95,17 +99,18 @@ export default function Products({id} : {id : number}) {
                   <ButtonGroup>
                     <Tooltip title="Show">
                       <IconButton
-                        component="span"
+                        component={RouterLink}
                         color="primary"
+                        to={`/collections/${params.collectionId}/products/${row.id}`}
                       >
                         <VisibilityIcon />
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="Edit">
                       <IconButton
-                        component="span"
+                        component={RouterLink}
                         color="success"
-
+                        to={`/collections/${params.collectionId}/products/${row.id}`}
                       >
                         <EditIcon />
                       </IconButton>
